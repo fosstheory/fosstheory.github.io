@@ -71,6 +71,20 @@
   .api-box p b{color:var(--txt)}
   pre{font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.8;color:var(--em3);background:#02090a;border:1px solid rgba(52,211,153,.3);padding:20px;overflow-x:auto}
   pre .c{color:#5b7268}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;text-align:left}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;text-align:center}}
+  .hero-fig{position:relative}
+  .hero-fig img{width:100%;display:block;border:1px solid rgba(52,211,153,.5);box-shadow:0 0 60px rgba(16,185,129,.25)}
+  .hero-fig .cap{position:absolute;left:14px;bottom:14px;background:rgba(2,10,8,.82);border:1px solid rgba(52,211,153,.45);padding:8px 14px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--em3)}
+  .powered{display:flex;align-items:center;gap:14px;justify-content:center;margin-top:34px;color:var(--mut);font-size:11px;letter-spacing:.3em;text-transform:uppercase}
+  .powered img{height:34px;width:auto}
+  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+  .shot{border:1px solid var(--line);background:var(--panel)}
+  .shot img{width:100%;height:190px;object-fit:cover;display:block}
+  .shot .sc{padding:14px 16px}
+  .shot .sc b{display:block;font-family:Orbitron,sans-serif;font-size:13px;letter-spacing:.08em;margin-bottom:5px}
+  .shot .sc span{color:var(--mut);font-size:12.5px;line-height:1.6}
+  .live-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:26px}
   .plans{text-align:center;border:1px solid var(--line);background:linear-gradient(180deg,rgba(251,191,36,.05),rgba(16,185,129,.05));padding:52px 30px}
   .plans h2{margin-bottom:16px}
   .plans p{color:var(--mut);max-width:680px;margin:0 auto;line-height:1.8;font-size:15.5px}
@@ -90,12 +104,26 @@
   </nav>
 
   <header>
-    <div class="kicker">Software Licensing · Wonderlands Technologies</div>
-    <h1>LICENSE THE<br><span class="grad">WONDERLANDS PLATFORM</span></h1>
-    <p class="sub">Foss Theory licenses the proprietary, multi-tenant platform behind <b>Wonderlands World</b> — the 3D design engine, website builder, catalogue, quoting, CRM, marketing and live video systems — as <b>plug-and-play products on monthly plans</b>. Your company, your brand, your domain. Our engine underneath.</p>
-    <div class="cta-row">
-      <a class="btn solid" href="#products">See the products</a>
-      <a class="btn ghost" href="#api">Public API v1</a>
+    <div class="hero-grid">
+      <div>
+        <div class="kicker">Software Licensing · Wonderlands Technologies</div>
+        <h1>LICENSE THE<br><span class="grad">WONDERLANDS PLATFORM</span></h1>
+        <p class="sub" style="margin-left:0">Foss Theory licenses the proprietary, multi-tenant platform behind <b>Wonderlands World</b> — the 3D design engine, website builder, catalogue, quoting, CRM, marketing and live video systems — as <b>plug-and-play products on monthly plans</b>. Your company, your brand, your domain. Our engine underneath.</p>
+        <div class="cta-row" style="justify-content:flex-start">
+          <a class="btn solid" href="#products">See the products</a>
+          <a class="btn ghost" href="#api">Public API v1</a>
+        </div>
+      </div>
+      <figure class="hero-fig">
+        <img src="bermuda-pool.webp" alt="Bermuda pool design rendered by the Wonderlands 3D engine">
+        <figcaption class="cap">Rendered by the Wonderlands 3D engine</figcaption>
+      </figure>
+    </div>
+    <div class="powered">Powered by <img src="wonderlands-logo.webp" alt="Wonderlands World"> Wonderlands World technology</div>
+    <div class="live-row">
+      <a class="btn ghost" href="https://wonderlandsworld.com">See it running: Wonderlands World</a>
+      <a class="btn ghost" href="https://wonderlandsworld.com/flip">Open the FLIP catalogue</a>
+      <a class="btn ghost" href="https://wonderlandsworld.com/technology">Read the technical whitepaper</a>
     </div>
   </header>
 
@@ -106,6 +134,15 @@
     <div class="stat"><div class="n">10</div><div class="l">Licensable platform products</div></div>
     <div class="stat"><div class="n">API v1</div><div class="l">Scoped keys · rate limits · JS SDK</div></div>
   </div>
+
+  <section style="padding-top:54px">
+    <div class="sec-head"><span class="no">00</span><h2>DESIGNED ON THE PLATFORM</h2><p>Real projects designed and rendered with the licensed 3D studios — the same engine your customers would use.</p></div>
+    <div class="gallery">
+      <div class="shot"><img src="laguna-deluxe-pool.webp" alt="Laguna Deluxe pool and spa design"><div class="sc"><b>LAGUNA DELUXE</b><span>Pool &amp; Spa Suite — configuration, finishes and instant estimate.</span></div></div>
+      <div class="shot"><img src="olympia-pool.webp" alt="Olympia pool design"><div class="sc"><b>OLYMPIA</b><span>Design Studio — 2D blueprint mirrored live into the 3D model.</span></div></div>
+      <div class="shot"><img src="winderview-pool.webp" alt="Winderview pool and outdoor living design"><div class="sc"><b>WINDERVIEW</b><span>Outdoor living — decks, coping and true-scale textures at 60 fps.</span></div></div>
+    </div>
+  </section>
 
   <section id="products">
     <div class="sec-head"><span class="no">01</span><h2>PLATFORM PRODUCTS</h2><p>Every product below is live technology from the Wonderlands platform, licensed as a module. Take one, or run your whole business on the stack.</p></div>
