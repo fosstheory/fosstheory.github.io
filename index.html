@@ -3,180 +3,182 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FOSS THEORY — Software Licensing Platform & Website Builder</title>
-<meta name="description" content="Foss Theory is a software licensing platform and website builder powered by Wonderlands World technologies. Plug-and-play modules, monthly licensing plans, and a simple API.">
+<title>FOSS THEORY — License the Wonderlands Platform</title>
+<meta name="description" content="Foss Theory licenses the Wonderlands World technology platform: Website Builder V2, FLIP, Quote Atelier, CRM, Socialite, Command Center, live video, Genius AI and a real-time 3D design engine. Plug-and-play products on monthly plans, plus Public API v1.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  :root { color-scheme: dark; --grn: #00ff41; --grn-dim: #00c832; --ink: #c8ffd4; }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: #000;
-    color: var(--ink);
-    font-family: 'Courier New', ui-monospace, Menlo, monospace;
-    background-image:
-      radial-gradient(ellipse 90% 50% at 50% 0%, rgba(0, 255, 65, .10), transparent 70%),
-      repeating-linear-gradient(0deg, rgba(0,255,65,.025) 0 1px, transparent 1px 3px);
-    background-repeat: no-repeat, repeat;
+  :root{
+    --bg:#04070a; --panel:#0a1114; --line:rgba(52,211,153,.22);
+    --em:#10b981; --em2:#34d399; --em3:#6ee7b7; --gold:#fbbf24;
+    --txt:#e7f5ee; --mut:#93a89d;
   }
-  .wrap { max-width: 1020px; margin: 0 auto; padding: 60px 24px 80px; }
-  header { text-align: center; }
-  .mark { font-size: 12px; letter-spacing: .5em; color: var(--grn); text-transform: uppercase; text-shadow: 0 0 8px rgba(0,255,65,.7); }
-  h1 {
-    font-weight: 700;
-    font-size: clamp(42px, 8.5vw, 88px);
-    letter-spacing: .08em;
-    margin-top: 24px;
-    line-height: 1.05;
-    color: #eaffef;
-    text-shadow: 0 0 18px rgba(0,255,65,.55), 0 0 46px rgba(0,255,65,.25);
-  }
-  h1 span { color: var(--grn); }
-  .cursor { display: inline-block; width: .55em; height: .9em; background: var(--grn); vertical-align: -0.08em; margin-left: .12em; animation: blink 1.1s steps(1) infinite; box-shadow: 0 0 12px rgba(0,255,65,.8); }
-  @keyframes blink { 50% { opacity: 0; } }
-  .tagline { margin: 28px auto 0; max-width: 740px; font-size: clamp(15px, 2.2vw, 18px); line-height: 1.75; color: #9fe8ab; }
-  .tagline b { color: #eaffef; font-weight: 700; }
-  .rule { width: 84px; height: 2px; background: var(--grn); margin: 42px auto; box-shadow: 0 0 10px rgba(0,255,65,.8); }
-  h2 {
-    font-weight: 700;
-    font-size: clamp(21px, 3.4vw, 30px);
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    text-align: center;
-    margin-bottom: 16px;
-    color: #eaffef;
-    text-shadow: 0 0 12px rgba(0,255,65,.45);
-  }
-  h2::before { content: "> "; color: var(--grn); }
-  .sub { text-align: center; color: #8fd99b; line-height: 1.75; max-width: 700px; margin: 0 auto 36px; font-size: 15px; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 18px; }
-  .card {
-    border: 1px solid rgba(0, 255, 65, .4);
-    background: rgba(0, 40, 12, .35);
-    padding: 24px 22px;
-    box-shadow: inset 0 0 24px rgba(0,255,65,.05);
-  }
-  .card h3 { font-size: 14px; letter-spacing: .2em; text-transform: uppercase; color: var(--grn); margin-bottom: 12px; text-shadow: 0 0 8px rgba(0,255,65,.6); }
-  .card p { color: #9fe8ab; line-height: 1.7; font-size: 14px; }
-  section { margin-top: 70px; }
-  .api {
-    border: 1px solid rgba(0, 255, 65, .4);
-    background: rgba(0, 40, 12, .35);
-    padding: 32px 26px;
-    text-align: center;
-  }
-  .api p { color: #9fe8ab; line-height: 1.75; max-width: 640px; margin: 0 auto; font-size: 15px; }
-  .api code {
-    display: inline-block;
-    margin-top: 18px;
-    background: #001804;
-    border: 1px solid var(--grn);
-    padding: 12px 18px;
-    font-size: 14px;
-    color: var(--grn);
-    text-shadow: 0 0 6px rgba(0,255,65,.6);
-    font-family: inherit;
-  }
-  .plans { text-align: center; }
-  .plans p { color: #9fe8ab; line-height: 1.75; max-width: 660px; margin: 0 auto; font-size: 15px; }
-  .cta {
-    display: inline-block;
-    margin-top: 28px;
-    color: #000;
-    background: var(--grn);
-    padding: 14px 32px;
-    text-decoration: none;
-    font-size: 13px;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    font-weight: 700;
-    box-shadow: 0 0 20px rgba(0,255,65,.45);
-    font-family: inherit;
-  }
-  .cta:hover { background: #5cff85; }
-  footer {
-    margin-top: 84px;
-    text-align: center;
-    font-size: 12px;
-    letter-spacing: .26em;
-    text-transform: uppercase;
-    color: #4f9e5f;
-    line-height: 2.2;
-  }
-  footer a { color: #4f9e5f; }
-  footer a:hover { color: var(--grn); }
-  .ventures { margin-top: 10px; }
-  .ventures a { margin: 0 10px; text-decoration: none; border-bottom: 1px solid rgba(0,255,65,.4); padding-bottom: 2px; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--txt);font-family:Inter,system-ui,sans-serif;overflow-x:hidden}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;
+    background:
+      radial-gradient(ellipse 70% 45% at 50% -5%, rgba(16,185,129,.20), transparent 70%),
+      radial-gradient(ellipse 45% 30% at 85% 100%, rgba(251,191,36,.06), transparent 70%),
+      linear-gradient(rgba(52,211,153,.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(52,211,153,.045) 1px, transparent 1px);
+    background-size:auto,auto,44px 44px,44px 44px;}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px;position:relative}
+  .mono{font-family:'JetBrains Mono',monospace}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:26px 0}
+  .logo{font-family:Orbitron,sans-serif;font-weight:900;letter-spacing:.14em;font-size:17px}
+  .logo b{color:var(--em2)}
+  nav .links a{color:var(--mut);text-decoration:none;font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin-left:28px}
+  nav .links a:hover{color:var(--em3)}
+  header{padding:84px 0 30px;text-align:center}
+  .kicker{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase}
+  h1{font-family:Orbitron,sans-serif;font-weight:900;font-size:clamp(40px,7.6vw,84px);line-height:1.04;letter-spacing:.02em;margin-top:26px}
+  h1 .grad{background:linear-gradient(92deg,#e7f5ee 10%,var(--em2) 55%,var(--em) 90%);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none}
+  .sub{max-width:780px;margin:28px auto 0;color:var(--mut);font-size:clamp(16px,2.2vw,19px);line-height:1.75}
+  .sub b{color:var(--txt);font-weight:600}
+  .cta-row{margin-top:40px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-block;padding:15px 32px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;border:1px solid var(--em);transition:.2s}
+  .btn.solid{background:var(--em);color:#03130c;font-weight:600;box-shadow:0 0 28px rgba(16,185,129,.35)}
+  .btn.solid:hover{background:var(--em2)}
+  .btn.ghost{color:var(--em3)}
+  .btn.ghost:hover{background:rgba(16,185,129,.10)}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin:70px 0 10px}
+  .stat{background:var(--panel);padding:26px 18px;text-align:center}
+  .stat .n{font-family:Orbitron,sans-serif;font-size:30px;font-weight:700;color:var(--em2)}
+  .stat .l{margin-top:8px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mut);line-height:1.7}
+  section{padding:76px 0 6px}
+  .sec-head{display:flex;align-items:baseline;gap:18px;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:38px}
+  .sec-head .no{font-family:'JetBrains Mono',monospace;color:var(--gold);font-size:14px}
+  h2{font-family:Orbitron,sans-serif;font-weight:700;font-size:clamp(24px,3.6vw,36px);letter-spacing:.04em}
+  .sec-head p{margin-left:auto;max-width:430px;color:var(--mut);font-size:14px;line-height:1.7;text-align:right}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px}
+  .card{background:linear-gradient(180deg,rgba(16,185,129,.06),rgba(16,185,129,.015));border:1px solid var(--line);padding:28px 26px;transition:.2s}
+  .card:hover{border-color:rgba(52,211,153,.55);box-shadow:0 0 32px rgba(16,185,129,.12);transform:translateY(-2px)}
+  .card .tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase}
+  .card h3{font-family:Orbitron,sans-serif;font-size:19px;font-weight:700;letter-spacing:.05em;margin:12px 0 12px}
+  .card p{color:var(--mut);font-size:14.5px;line-height:1.75}
+  .card p b{color:var(--em3);font-weight:600}
+  .arch{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+  .tier{border:1px solid var(--line);background:var(--panel);padding:26px 24px}
+  .tier h4{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--em2);margin-bottom:16px}
+  .tier ul{list-style:none}
+  .tier li{color:var(--mut);font-size:14px;line-height:1.65;padding:7px 0;border-top:1px dashed rgba(52,211,153,.14)}
+  .tier li:first-child{border-top:none}
+  .tier li b{color:var(--txt);font-weight:600}
+  .api-box{border:1px solid var(--line);background:#060b0d;padding:30px 28px;display:grid;grid-template-columns:1fr 1fr;gap:30px}
+  @media(max-width:760px){.api-box{grid-template-columns:1fr}.sec-head p{display:none}}
+  .api-box p{color:var(--mut);line-height:1.8;font-size:15px}
+  .api-box p b{color:var(--txt)}
+  pre{font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.8;color:var(--em3);background:#02090a;border:1px solid rgba(52,211,153,.3);padding:20px;overflow-x:auto}
+  pre .c{color:#5b7268}
+  .plans{text-align:center;border:1px solid var(--line);background:linear-gradient(180deg,rgba(251,191,36,.05),rgba(16,185,129,.05));padding:52px 30px}
+  .plans h2{margin-bottom:16px}
+  .plans p{color:var(--mut);max-width:680px;margin:0 auto;line-height:1.8;font-size:15.5px}
+  footer{margin-top:90px;border-top:1px solid var(--line);padding:38px 0 46px;text-align:center;color:#5f7269;font-size:12px;letter-spacing:.22em;text-transform:uppercase;line-height:2.3}
+  footer a{color:#5f7269;text-decoration:none;border-bottom:1px solid rgba(52,211,153,.35);padding-bottom:2px;margin:0 8px}
+  footer a:hover{color:var(--em2)}
 </style>
 </head>
 <body>
 <div class="wrap">
 
+  <nav>
+    <div class="logo">FOSS <b>THEORY</b></div>
+    <div class="links">
+      <a href="#products">Products</a><a href="#engine">Engine</a><a href="#api">API</a><a href="#plans">Plans</a>
+    </div>
+  </nav>
+
   <header>
-    <div class="mark">// Foss Theory · Orlando, Florida</div>
-    <h1>FOSS <span>THEORY</span><span class="cursor"></span></h1>
-    <p class="tagline">A <b>software licensing platform</b> and <b>website builder</b> powered by Wonderlands World technologies. License proven modules, plug them into your own site, and launch on monthly plans — no rebuild, no big upfront build cost.</p>
+    <div class="kicker">Software Licensing · Wonderlands Technologies</div>
+    <h1>LICENSE THE<br><span class="grad">WONDERLANDS PLATFORM</span></h1>
+    <p class="sub">Foss Theory licenses the proprietary, multi-tenant platform behind <b>Wonderlands World</b> — the 3D design engine, website builder, catalogue, quoting, CRM, marketing and live video systems — as <b>plug-and-play products on monthly plans</b>. Your company, your brand, your domain. Our engine underneath.</p>
+    <div class="cta-row">
+      <a class="btn solid" href="#products">See the products</a>
+      <a class="btn ghost" href="#api">Public API v1</a>
+    </div>
   </header>
 
-  <div class="rule"></div>
+  <div class="stats">
+    <div class="stat"><div class="n">40+</div><div class="l">Edge micro-services in production</div></div>
+    <div class="stat"><div class="n">60 FPS</div><div class="l">Real-time 3D engine, in the browser</div></div>
+    <div class="stat"><div class="n">14</div><div class="l">Design &amp; quote disciplines</div></div>
+    <div class="stat"><div class="n">10</div><div class="l">Licensable platform products</div></div>
+    <div class="stat"><div class="n">API v1</div><div class="l">Scoped keys · rate limits · JS SDK</div></div>
+  </div>
 
-  <section style="margin-top:0">
-    <h2>Plug-and-Play Modules</h2>
-    <p class="sub">Every module is a working Wonderlands World technology, packaged for licensing. Add one, or build your whole website on the platform.</p>
+  <section id="products">
+    <div class="sec-head"><span class="no">01</span><h2>PLATFORM PRODUCTS</h2><p>Every product below is live technology from the Wonderlands platform, licensed as a module. Take one, or run your whole business on the stack.</p></div>
     <div class="grid">
-      <div class="card">
-        <h3>Live Video</h3>
-        <p>Branded live video rooms built into your website. Guests join with a name — no account, no external meeting links.</p>
-      </div>
-      <div class="card">
-        <h3>Widget Sharing</h3>
-        <p>Stage interactive widgets live inside the room: product showcases, catalog routes, and full discipline suites your clients can use in real time.</p>
-      </div>
-      <div class="card">
-        <h3>Genius AI Concierge</h3>
-        <p>An AI concierge that books appointments, answers customers, and guides buyers through your catalog.</p>
-      </div>
-      <div class="card">
-        <h3>FLIP Catalog</h3>
-        <p>A flipbook-style digital catalog that turns your product range into a browsable, shoppable experience.</p>
-      </div>
-      <div class="card">
-        <h3>Procurement Marketplace</h3>
-        <p>Post jobs, receive bids, compare suppliers, and award work — a complete bidding loop with messaging.</p>
-      </div>
-      <div class="card">
-        <h3>Booking & Follow-Up</h3>
-        <p>Appointment booking that stamps your own live video link, plus unified follow-up automation across every inquiry.</p>
-      </div>
+      <div class="card"><div class="tag">Build</div><h3>WEBSITE BUILDER V2</h3><p>Multi-page drag-and-drop websites with <b>custom domains and live publishing</b>. The builder the platform's own tenant sites run on.</p></div>
+      <div class="card"><div class="tag">Sell</div><h3>FLIP</h3><p>Interactive catalogue books with <b>in-page cart and actions</b> — your product range as a browsable, narrated, shoppable flipbook.</p></div>
+      <div class="card"><div class="tag">Quote</div><h3>QUOTE ATELIER</h3><p>Configured, priced and printable proposals across <b>14 disciplines</b> — pools, lanai, solar, sauna, enclosures, fencing, gates, covers, pavers, turf, liners, finishes, landscaping — each with its own inclusions and warranties.</p></div>
+      <div class="card"><div class="tag">Manage</div><h3>COMPANY CRM</h3><p>Pipeline, accounts, contacts, activities and <b>weighted forecast</b>, with company roles for owners, staff, sales teams and customers.</p></div>
+      <div class="card"><div class="tag">Market</div><h3>SOCIALITE</h3><p>Social publishing, campaigns and outreach console — scheduler, AI content, insights and a <b>Shield</b> layer of caps, opt-outs and quiet hours.</p></div>
+      <div class="card"><div class="tag">Operate</div><h3>COMMAND CENTER</h3><p>Platform-wide operations with <b>real-data telemetry</b> across every licensed company, product and channel.</p></div>
+      <div class="card"><div class="tag">Meet</div><h3>WONDERLANDS LIVE</h3><p>In-browser live video rooms on your own site — guests join with a name, no accounts and no external meeting links, with <b>widgets staged live inside the room</b>.</p></div>
+      <div class="card"><div class="tag">Intelligence</div><h3>GENIUS</h3><p>A pluggable intelligence layer with <b>per-company knowledge</b>: concierge chat and voice, appointment booking, showroom guidance and design assistance built in.</p></div>
+      <div class="card"><div class="tag">Source</div><h3>PROCUREMENT</h3><p>Post jobs, receive bids, compare suppliers side by side and award work — a complete bidding loop with per-job messaging.</p></div>
+      <div class="card"><div class="tag">Design</div><h3>3D DESIGN STUDIOS</h3><p>Suite engines for every discipline: pool and spa, sauna, enclosure and category studios with configurators, galleries and instant estimates.</p></div>
     </div>
   </section>
 
-  <section>
-    <h2>Website Builder</h2>
-    <p class="sub">Build your website on Foss Theory with the modules already inside — pick your technologies, plug them in, and publish. Your site, your brand, our engine.</p>
-  </section>
-
-  <section>
-    <h2>Simple API</h2>
-    <div class="api">
-      <p>Prefer to integrate yourself? One simple API gives your product access to the same licensed modules, authenticated with a single API key.</p>
-      <code>Authorization: Bearer YOUR_API_KEY</code>
+  <section id="engine">
+    <div class="sec-head"><span class="no">02</span><h2>THE ENGINE UNDERNEATH</h2><p>One strictly typed TypeScript platform end to end — interface, 3D geometry, pricing and serverless functions — on a multi-tenant PostgreSQL core.</p></div>
+    <div class="arch">
+      <div class="tier"><h4>3D Spatial Engine</h4><ul>
+        <li><b>Three.js + React Three Fiber</b> WebGL scene graph</li>
+        <li><b>Constructive solid geometry</b> — boolean solvers cut pools, steps and seating into terrain live</li>
+        <li><b>Bidirectional 2D ↔ 3D sync</b> — blueprint plane mirrored into the 3D model</li>
+        <li><b>Procedural UV mapping</b> at true 1×1 ft texture scale</li>
+        <li><b>Geospatial imaging</b> — Cesium, Leaflet and aerial tiles for roof tracing and solar layout</li>
+      </ul></div>
+      <div class="tier"><h4>Data &amp; Security</h4><ul>
+        <li><b>Multi-tenant PostgreSQL</b> — every record carries a company key</li>
+        <li><b>Row-level security</b> evaluated on every query, not just in the interface</li>
+        <li><b>Sealed server procedures</b> — narrow, audited entry points for public visitors</li>
+        <li><b>Encrypted secrets</b> — provider keys stay server-side, never in the browser</li>
+        <li><b>Role model</b> — platform admin, company owner, staff, sales, customer</li>
+      </ul></div>
+      <div class="tier"><h4>Edge Runtime</h4><ul>
+        <li><b>40+ serverless functions</b> on a distributed Deno edge runtime</li>
+        <li><b>Scheduler</b> — timed sends and posts fire every five minutes, browser closed or not</li>
+        <li><b>Metering engine</b> enforces plan limits, credits and overage</li>
+        <li><b>Stripe, Twilio, Resend</b> — checkout, voice/SMS/WhatsApp and email in production</li>
+        <li><b>PDF &amp; print</b> — high-DPI quotes, invoices and signed documents</li>
+      </ul></div>
     </div>
   </section>
 
-  <section class="plans">
-    <h2>Monthly Licensing Plans</h2>
-    <p>Licensing runs on simple monthly plans that scale with the modules and sites you run. No large upfront license fee — start with what you need and grow.</p>
-    <a class="cta" href="https://www.linkedin.com/in/khaliapadilla/">Talk to Us About Licensing</a>
+  <section id="api">
+    <div class="sec-head"><span class="no">03</span><h2>PUBLIC API V1</h2><p>Prefer to build on it yourself? The same licensed platform, exposed through one simple API.</p></div>
+    <div class="api-box">
+      <p>Public API v1 authenticates with <b>hashed bearer keys</b>, scoped per product and <b>rate limited</b> per plan, with a <b>JavaScript SDK</b> to get moving fast. Keys are issued per company from your own dashboard — your data stays inside your tenant boundary, enforced by the database itself.</p>
+      <pre><span class="c">// Foss Theory Public API v1</span>
+fetch("https://api.fosstheory.com/v1/quotes", {
+  method: "POST",
+  headers: {
+    "Authorization": "Bearer ft_live_…",
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({ discipline: "pool" })
+})</pre>
+    </div>
+  </section>
+
+  <section id="plans">
+    <div class="plans">
+      <div class="kicker">Monthly Licensing</div>
+      <h2 style="margin-top:14px">PLANS THAT SCALE WITH YOU</h2>
+      <p>Licensing runs on simple monthly plans. The platform's metering engine tracks modules, sites and usage against your plan — start with a single product and grow into the full stack. No large upfront license fee.</p>
+      <div class="cta-row"><a class="btn solid" href="https://www.linkedin.com/in/khaliapadilla/">Talk to us about licensing</a></div>
+    </div>
   </section>
 
   <footer>
-    Foss Theory · Khalia Padilla<br>
-    <a href="https://github.com/fosstheory">GitHub</a> · <a href="https://www.linkedin.com/in/khaliapadilla/">LinkedIn</a>
-    <div class="ventures">
-      <a href="https://startupfactoryhub.com">Startup Factory Hub</a>
-      <a href="https://decahedronventures.com">Decahedron Ventures</a>
-      <a href="https://wonderlandsworld.com">Wonderlands World</a>
-      <a href="https://www.goldarrow.io">Gold Arrow</a>
-    </div>
+    Foss Theory · Orlando, Florida · Khalia Padilla<br>
+    <a href="https://github.com/fosstheory">GitHub</a><a href="https://www.linkedin.com/in/khaliapadilla/">LinkedIn</a><br>
+    <a href="https://wonderlandsworld.com">Wonderlands World</a><a href="https://startupfactoryhub.com">Startup Factory Hub</a><a href="https://decahedronventures.com">Decahedron Ventures</a><a href="https://www.goldarrow.io">Gold Arrow</a>
   </footer>
 
 </div>
